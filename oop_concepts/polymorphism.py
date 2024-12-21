@@ -17,9 +17,13 @@ class Bird(Animal):
     def make_sound(self):
         return "Tweet! Tweet!"
 
+
+def animal_sounds(animals: Animal):
+    for animal in animals:
+        print(animal.make_sound())
+
+
 animals = [Dog(), Cat(), Bird()]
 
 print("Animal sounds:")
-for animal in animals:
-    print(animal.make_sound())
-
+animal_sounds(animals)
