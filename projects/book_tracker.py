@@ -1,3 +1,11 @@
+from enum import StrEnum
+
+
+class FilterCriteria(StrEnum):
+    AUTHOR = "author"
+    GENRE = "genre"
+
+
 class Book:
     def __init__(self, title: str, author: str, genre: str):
         self.title = title
@@ -36,7 +44,7 @@ class BookTracker:
                 return
         print(f"No book found with the title '{title}'.")
 
-    def _filter(self, by: str, value: str):
+    def _filter(self, by: FilterCriteria, value: str) -> list[Book]:
         if by not in ["author", "genre"] and hasattr(Book, by):
             raise ValueError("Invalid 'by' selected for filtering")
 
@@ -55,7 +63,8 @@ class BookTracker:
         return filtered_books
 
     def filter_books_by_author(self, author: str):
-        self._filter("author", author)
+        self._filter(FilterCriteria.AUTHOR, author)
 
     def filter_books_by_genre(self, genre: str):
-        self._filter("genre", genre)
+        self._filter(FilterCriteria.GENRE, genre)
+
