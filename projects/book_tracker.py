@@ -52,7 +52,7 @@ class BookTracker:
     def filter_books_by_genre(self, genre: str):
         filtered_books = []
         for book in self.books:
-          if book.genre.lower() == author.genre():
+          if book.genre.lower() == genre.lower():
               filtered_books.append(book) 
         
         if not filtered_books:
