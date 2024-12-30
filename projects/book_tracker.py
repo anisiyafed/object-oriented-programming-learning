@@ -1,5 +1,5 @@
 class Book:
-    def __init__(self, title, author, genre):
+    def __init__(self, title: str, author: str, genre: str):
         self.title = title
         self.author = author
         self.genre = genre
@@ -17,7 +17,7 @@ class BookTracker:
     def __init__(self):
         self.books = []
 
-    def add_book(self, new_book):
+    def add_book(self, new_book: Book):
         self.books.append(new_book)
 
     def view_books(self):
@@ -28,7 +28,7 @@ class BookTracker:
             for book in self.books:
                 print(book)
 
-    def mark_book_as_read(self, title):
+    def mark_book_as_read(self, title: str):
         for book in self.books:
             if book.title.lower() == title.lower():
                 book.mark_as_read()
@@ -36,7 +36,7 @@ class BookTracker:
                 return
         print(f"No book found with the title '{title}'.")
 
-    def filter_books_by_author(self, author):
+    def filter_books_by_author(self, author: str):
         filtered_books = []
         for book in self.books:
           if book.author.lower() == author.lower():
@@ -49,7 +49,7 @@ class BookTracker:
             for book in filtered_books:
                 print(book)
 
-    def filter_books_by_genre(self, genre):
+    def filter_books_by_genre(self, genre: str):
         filtered_books = []
         for book in self.books:
           if book.genre.lower() == author.genre():
