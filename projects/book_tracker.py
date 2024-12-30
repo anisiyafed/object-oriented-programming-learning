@@ -36,28 +36,26 @@ class BookTracker:
                 return
         print(f"No book found with the title '{title}'.")
 
-    def filter_books_by_author(self, author: str):
+    def _filter(self, by: str, value: str):
+        if by not in ["author", "genre"] and hasattr(Book, by):
+            raise ValueError("Invalid 'by' selected for filtering")
+
         filtered_books = []
         for book in self.books:
-          if book.author.lower() == author.lower():
-              filtered_books.append(book)
-          
+            if getattr(book, by).lower() == value.lower():
+                filtered_books.append(book)
+
         if not filtered_books:
-            print(f"No books found by the author '{author}'.")
+            print(f"No books found with {by} '{value}'.")
         else:
-            print(f"\nBooks by {author}:")
+            print(f"\nBooks with {by} '{value}':")
             for book in filtered_books:
                 print(book)
 
+        return filtered_books
+
+    def filter_books_by_author(self, author: str):
+        self._filter("author", author)
+
     def filter_books_by_genre(self, genre: str):
-        filtered_books = []
-        for book in self.books:
-          if book.genre.lower() == genre.lower():
-              filtered_books.append(book) 
-        
-        if not filtered_books:
-            print(f"No books found in the genre '{genre}'.")
-        else:
-            print(f"\nBooks in Genre: {genre}:")
-            for book in filtered_books:
-                print(book)
+        self._filter("genre", genre)
