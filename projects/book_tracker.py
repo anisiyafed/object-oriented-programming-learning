@@ -7,11 +7,11 @@ class FilterCriteria(StrEnum):
 
 
 class Book:
-    def __init__(self, title: str, author: str, genre: str):
+    def __init__(self, title: str, author: str, genre: str, read: bool = False):
         self.title = title
         self.author = author
         self.genre = genre
-        self.read = False
+        self.read = read
 
     def mark_as_read(self):
         self.read = True
