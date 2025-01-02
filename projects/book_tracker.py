@@ -50,7 +50,7 @@ class BookTracker:
 
         filtered_books = []
         for book in self.books:
-            if getattr(book, by).lower() == value.lower():
+            if value.lower() in getattr(book, by).lower():
                 filtered_books.append(book)
 
         if not filtered_books:
