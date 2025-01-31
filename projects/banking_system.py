@@ -5,10 +5,12 @@ class Account:
         self._balance = balance
 
     def deposit(self, amount: float):
-        pass
+        amount = abs(amount)
+        self._balance += amount
 
     def withdraw(self, amount: float):
-        pass
+        amount = abs(amount)
+        self._balance -= amount
 
     def __str__(self):
         return f"Account {self._account_number} ({self.owner}): Balance ${self._balance:.2f}"
