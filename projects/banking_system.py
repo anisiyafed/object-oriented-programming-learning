@@ -34,10 +34,16 @@ class CheckingAccount(Account):
 
 class Bank:
     def __init__(self):
-        self.accounts = []
+        self.accounts = {}
 
     def add_account(self, account: Account):
-        self.accounts.append(account)
+        self.accounts[account._account_number] = account
+
+    def get_account(self, account_number: str):
+        account = self.accounts.get(account_number)
+        if not account:
+            raise ValueError("Account not found!")
+        return account
 
     def transfer(self, from_acct: str, to_acct: str, amount: float):
         pass
