@@ -46,4 +46,7 @@ class Bank:
         return account
 
     def transfer(self, from_acct: str, to_acct: str, amount: float):
-        pass
+        source = self.get_account(from_acct)
+        target = self.get_account(to_acct)
+        source.withdraw(amount)
+        target.deposit(amount)
