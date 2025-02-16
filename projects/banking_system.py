@@ -1,3 +1,11 @@
+class Transaction:
+    def __init__(self, amount: float, from_account: str, to_account: str, date: str):
+        self.amount = amount
+        self.from_account = from_account
+        self.to_account = to_account
+        self.date = date
+
+
 class Account:
     def __init__(self, account_number: str, owner: str, balance: float = 0.0):
         self._account_number = account_number
